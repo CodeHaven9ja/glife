@@ -1,5 +1,5 @@
 <cfoutput>
-	<div class="span9 cat-inner">
+	
 	<cfif flashKeyExists("error")>
 		<div class="alert alert-block alert-error">
 			<h4 class="class="alert-heading"">Error</h4>
@@ -7,23 +7,29 @@
 		</div>
 	</cfif>
 		#startFormTag(action="Signin")#
-			<ul class="forms">
+			<ul class="forms" id="slick-login">
 				<li>
-		            <input class="k-textbox" id="user-email" name="user[email]" type="email" placeholder="Email">
+		            <span>
+		            	<input id="user-email" name="user[email]" type="email" placeholder="Email">
+		            </span>
 				</li>
 				
 				<li>
-		            <input class="k-textbox" id="user-password" type="password" name="user[password]" placeholder="Password">
+					<span>
+		            	<input id="user-password" type="password" name="user[password]" placeholder="Password">
+		            </span>
 				</li>
 				
 				<li>
-					<button type="submit" class="btn btn-success" rel="tooltip" title="first tooltip">Sign In</button>
+					<button type="submit">Sign In</button>
 				</li>
 				
-			</ul>       
-			
-			<a href="##">Forgot Your password?</a>
-			#linkTo(action="register", text="New User?", class="register")#
+				<li>
+					<a href="##">Forgot Your password?</a>
+					#linkTo(action="register", text="New User", class="register")#
+				</li>
+				
+			</ul>       			
 		#endFormTag()#
-	</div>
+
 </cfoutput>

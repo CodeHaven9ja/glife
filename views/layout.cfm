@@ -4,7 +4,7 @@
 <head>
   <title>Grand Life</title>
   <meta charset="utf-8">
-  #stylesheetLinkTag("reset, style")#
+  #stylesheetLinkTag("reset, style, mediaqueries")#
   <cfif params.controller EQ "home" and params.action EQ "login">
   	#stylesheetLinkTag("kendo.common.min, kendo.default.min")#
   </cfif>
@@ -15,6 +15,9 @@
   	<script type="text/javascript" src="js/html5.js"></script>
     <script type="text/javascript" src="js/IE9.js"></script>
   <![endif]-->
+  	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
 </head>
 
 <body>
