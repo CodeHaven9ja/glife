@@ -5,11 +5,11 @@
 	    	<h1><a href="index.html"><img src="images/logo.png" width="170" height="58" longdesc="index.html"></a></h1>
 	      <nav>
 	        <ul>
-	        	<li><a href="index.html" class="current">Home</a></li>
-	          <li><a href="about.html">About</a></li>
-	          <li><a href="news.html">News</a></li>
-	          <li><a href="gallery.html">Gallery</a></li>
-	          <li><a href="contacts.html">Contact</a></li>
+	          <li>#linkTo(route="home", text="Home", class="current")#</li>
+	          <li>#linkTo(route="about", text="About")#</li>
+	          <li>#linkTo(route="news", text="News")#</li>
+	          <li>#linkTo(route="loginPage", text="Login")#</li>
+	          <li>#linkTo(route="contact", text="Contact")#</li>
 	          
 	        </ul>
 	      </nav>
