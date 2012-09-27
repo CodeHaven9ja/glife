@@ -4,8 +4,9 @@
 <head>
   <title>Grand Life</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
   #stylesheetLinkTag("reset, style, mediaqueries")#
-  <cfif params.controller EQ "home" and params.action EQ "login">
+  <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#stylesheetLinkTag("kendo.common.min, kendo.default.min")#
   </cfif>
   <!--[if lt IE 7]>
@@ -56,10 +57,36 @@
   							gallery_init,
   							cufon-replace
   						")#
-  <cfif params.controller EQ "home" and params.action EQ "login">
+  <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#javascriptIncludeTag("kendo.web.min")#
   </cfif>
   <script type="text/javascript"> Cufon.now(); </script>
+  <script>
+	    $(document).ready(function() {
+	        var viewModel = kendo.observable({
+	            firstName: "John",
+	            lastName: "Doe",
+	            genders: ["Male", "Female"],
+	            gender: "Male",
+	            agreed: false,
+	            confirmed: false,
+	            register: function(e) {
+	                e.preventDefault();
+	
+	                this.set("confirmed", true);
+	            },
+	            startOver: function() {
+	                this.set("confirmed", false);
+	                this.set("agreed", false);
+	                this.set("gender", "Male");
+	                this.set("firstName", "John");
+	                this.set("lastName", "Doe");
+	            }
+	        });
+	
+	        kendo.bind($("##example"), viewModel);
+	    });
+	</script>
 </body>
 </html>
 
