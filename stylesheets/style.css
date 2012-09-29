@@ -41,6 +41,7 @@ html, body { height:100%;}
 	#content {
 		float: left;
 		width: 572px;
+		position:relative;
 	}
 	
 	/* Sidebar */
@@ -80,6 +81,13 @@ html, body { height:100%;}
 
 
 /*----- form defaults -----*/
+
+.form-wrap{
+	padding-top: 20%;
+	padding-left: 50%;
+	position:relative;
+	}
+
 input, select, textarea { 
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:1em;
@@ -103,12 +111,11 @@ input, select, textarea {
 #slick-login {
     width: 220px;
     height: 155px;
-    position: absolute;
-    left: 50%;
+    /*left: 50%;
     top: 50%;
     margin-left: -110px;
     margin-top: -75px;
-    padding-top: 20%;
+    padding-top: 20%;*/
 }
 
 #slick-login input[type="email"],#slick-login input[type="password"] {
@@ -621,3 +628,9 @@ footer {
 	text-indent:-9999px;
 	background-image: url(../images/twitte.png);
 }
+
+/*===================Content style====================*/
+
+#content article p{
+	font-family: 'Scada', sans-serif;
+	}

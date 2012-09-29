@@ -4,8 +4,8 @@
 <head>
   <title>Grand Life</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width" initial-scale=1.0">
-  #stylesheetLinkTag("reset, style, mediaqueries")#
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  #stylesheetLinkTag("reset, style, mediaqueries, http://fonts.googleapis.com/css?family=Scada")#
   <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#stylesheetLinkTag("kendo.common.min, kendo.default.min")#
   </cfif>
@@ -34,7 +34,7 @@
       <div class="inside"><!-- /div.inside -->
         <div class="wrapper"><!-- div.wrapper -->
         	<cfif params.route EQ "home">
-			  #includePartial("/partials/homeAside")#
+			  #includePartial("/partials/homeaside")#
 			</cfif>
           <!-- section##content -->
           <section id="content">
