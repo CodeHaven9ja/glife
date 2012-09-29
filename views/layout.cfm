@@ -33,7 +33,7 @@
     <div class="container"><!-- /div.container -->
       <div class="inside"><!-- /div.inside -->
         <div class="wrapper"><!-- div.wrapper -->
-        	<cfif params.route EQ "home">
+        	<cfif params.controller EQ "home" and params.action EQ "index">
 			  #includePartial("/partials/homeaside")#
 			</cfif>
           <!-- section##content -->
