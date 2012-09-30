@@ -5,7 +5,7 @@
   <title>Grand Life</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  #stylesheetLinkTag("reset, style, mediaqueries, http://fonts.googleapis.com/css?family=Scada,http://craigsworks.com/projects/qtip2/packages/latest/jquery.qtip.min.css")#
+  #stylesheetLinkTag("reset, style, mediaqueries, http://fonts.googleapis.com/css?family=Scada,jquery.qtip.min")#
   <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#stylesheetLinkTag("kendo.common.min, kendo.default.min")#
   </cfif>
@@ -56,7 +56,7 @@
   </cfif>
   
   #javascriptIncludeTag("	cufon-yui,  								
-  							http://craigsworks.com/projects/qtip2/packages/latest/jquery.qtip.min.js,
+  							jquery.qtip.min,
   							Humanst521_BT_400.font,
   							Humanst521_Lt_BT_400.font,
   							roundabout,

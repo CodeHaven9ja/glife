@@ -12,7 +12,8 @@
 	
 	<cffunction name="Signin">
 		<cfset pageTitle = "Login">
-		<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA"))>
+		<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA-512"))>
+        <cfdump var="#params#" abort="true">
 		<cfset user = model("user").findOne(where="email='#params.user.email#' AND password='#params.user.password#'")>
 		<cfif isObject(user)>
 			<cfset session.user.id = user.id>
@@ -35,6 +36,8 @@
 		
 		<!--- If no User struct in the params, redirect --->
         
+        <!---<cfdump var="#params#" abort="true" />--->
+        
 		<cfif NOT structKeyExists(params, 'user')>
 			<cfset redirectTo(action="register") />
 		</cfif>
@@ -42,6 +45,8 @@
 		<!--- Hash password --->
 		<!---<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA"))>
 		<cfset params.user.passwordConfirmation = lcase(hash(trim(params.user.passwordConfirmation), "SHA"))>--->
+        
+        <cfset params.user.role = 3 >
 		
 		<cfset user = model("user").new(params.user) />
 		
@@ -53,6 +58,20 @@
 			<!--- Success Message --->
             
 			    <cfset flashInsert(success="#user.firstname# was created successfully.") />
+                
+                <!--- Send Email --->
+                
+                <cfset userFullName = #user.firstname# & " " & #user.lastname#>
+                
+                <cfset sendEmail(
+					from="webmaster@testinggrounds.tk",
+					to=user.email,
+					subject = "Your account has been successfully created.",
+					recipientName=userFullName,
+					startDate=user.createdAt,
+					template = "successEmailTemplate"
+					
+				)>
 				
 				<!--- Redirect --->
 	            <cfset redirectTo(action="success", controller="home") />

@@ -50,7 +50,9 @@
                     <li class="row">
                     <p>#linkTo(action="tos", text="I have read the licence agreement.")#<input type="checkbox" id="agree" required="required" title="Ensure that you have read and understood the agreement before clicking register"> <label for="agree"></label></p>
                     </li>
-                    <li><button id="register-button" disabled="disabled">Register</button></li>
+                    
+                    <!--- TODO: Remember to disable the button back --->              
+                    <li><button id="register-button">Register</button></li>
                     </div>
 		            
 		            

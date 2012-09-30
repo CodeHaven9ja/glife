@@ -1,15 +1,11 @@
 $(function(){
 	
 	$('input[title]').qtip({
-		position: {
-			target: 'mouse'
-			}
+		
 		});
 		
 	$('select[title]').qtip({
-		position: {
-			target: 'mouse'
-			}
+		
 		});
 	
 	$("#agree").click(function() {

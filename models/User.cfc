@@ -40,6 +40,7 @@
 		private void function setSalt() {
 			if ( StructKeyExists(this, "passwordConfirmation") ) {
 				this.salt = GenerateSecretKey("AES", 256);
+				this.save();
 			}
 		}
 	
