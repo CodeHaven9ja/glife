@@ -1,20 +1,61 @@
 <cfparam name="user">
 <cfoutput>
+		<div class="form-wrap">
 		<cfif user.hasErrors()>
 			<div class="alert alert-error">
 			  #errorMessagesFor("user")#
 			</div>
 		</cfif>			
-			<div class="registration">
-		        <form>
+			
+            	#startFormTag(action="create", class="regform")#
 		            <ul>
-		                <li><label for="fname">First Name:</label><input id="fname" data-bind="value: firstName"></li>
-		                <li><label for="lname">Last Name:</label><input id="lname" data-bind="value: lastName"></li>
-		                <li><label for="gender">Gender:</label><select id="gender" data-bind="source: genders, value: gender"><option>Male</option><option>Female</option></select></li>
-		            </ul>
-		            <input type="checkbox" id="agree" data-bind="checked: agreed"> <label for="agree">I have read the licence agreement</label>
-		            <br><br>
-		            <button data-bind="enabled: agreed, click: register" style="display: block" disabled="disabled">Register</button>
-		        </form>
+		                <div id="userProfilePersonal" class="module">
+                            <li class="row">
+                            	<label for="user-firstname">First Name:</label><input id="user-firstname" name="user[firstname]" required="required" placeholder="First Name" class="bigtext" title="Enter your First name">
+                            	<label for="user-lastname">Last Name:</label><input id="user-lastname" name="user[lastname]" required="required" placeholder="Last Name" class="bigtext" title="Enter your Last name">
+                            </li>
+                            
+                            
+                            <li class="row-select">
+                                <label for="user-sex">Gender</label>
+                                <select id="user-sex" name="user[sex]" title="Choose your gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </li>
+                            
+                        </div>
+                        
+                        <div id="userProfileDetail" class="module">
+                            <li class="row">
+                            <label for="user-email">Email:</label><input id="user-email" name="user[email]" type="email" placeholder="Your email address" required="required" class="bigtext" title="Enter your Email address">
+                            </li>
+                            <li class="row">
+                            <label for="user-password">Password:</label><input id="user-password" name="user[password]" type="password" placeholder="Password" required="required" class="bigtext" title="Enter your Password">
+                            </li>
+                            <li class="row">
+                            <label for="user-passwordConfirmation">Confirm your password:</label><input id="user-passwordConfirmation" name="user[passwordConfirmation]" type="password" placeholder="Retype password" required="required" class="bigtext" title="Confirm your password by typing it again">
+                            </li>
+                        </div>
+                        
+                        <div id="userProfileExtra" class="module">
+                        	<p>Reserve a personal id for your profile</p>
+                        	<li class="row"><label for="user-urlid">URL ID</label><p class="urlid">http://grand-life.com/</p><input id="user-urlid" name="user[urlid]" required="required" title="This allows for easy navigation to your profile page"></li>
+                            <li class="row"><label for="user-phone">Phone number</label><input id="user-phone" name="user[phone]" required="required" class="bigtext"></li>                        
+                        </div>
+                        
+		            
+                    
+		            <div class="module">
+                    <li class="row">
+                    <p>#linkTo(action="tos", text="I have read the licence agreement.")#<input type="checkbox" id="agree" required="required" title="Ensure that you have read and understood the agreement before clicking register"> <label for="agree"></label></p>
+                    </li>
+                    <li><button id="register-button" disabled="disabled">Register</button></li>
+                    </div>
+		            
+		            
+		        #endFormTag()#
+                
+                </ul>
 		    </div>
 </cfoutput>

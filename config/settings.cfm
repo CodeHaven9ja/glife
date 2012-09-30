@@ -18,4 +18,11 @@
 	
 --->
 
-<cfset set(URLRewriting="off")>
+<cfset set(URLRewriting="on")>
+
+<cfset set(
+    functionName="sendEmail",
+    server="mail.testingground.tk",
+    username="webmaster@testingground.tk",
+    password="Pabopovib234."
+)>

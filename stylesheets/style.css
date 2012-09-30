@@ -84,7 +84,7 @@ html, body { height:100%;}
 
 .form-wrap{
 	padding-top: 20%;
-	padding-left: 50%;
+	padding-left: 15%;
 	position:relative;
 	}
 
@@ -253,6 +253,50 @@ input, select, textarea {
             background: url('/images/confirm.png') transparent no-repeat 0 0;
             text-align: center;
         }
+/*Registration*/
+.module{
+	margin-bottom: 30px;
+	margin-top: 45px;
+	width: 390px;
+}
+	
+.row{
+	clear: both;
+	margin: 0;
+	width: 390px;
+	padding-bottom: 10%;
+	}
+
+.row-select{
+	clear: both;
+	margin: 0;
+	}	
+
+.regform label{
+	float: left;
+	text-align: left;
+	width: 390px;
+	color: black;
+	font-size: 102%;
+	font-weight:bold;
+	padding-bottom: 4px;
+	padding-top: 10px;
+}
+.regform input{
+	float:left;
+}
+
+.bigtext{
+	height: 36px;
+	width: 246px;
+	padding: 4px 8px;
+	font-size:14px;
+} 
+
+.urlid{
+	display:inline;
+	float:left;
+}
 
 /*----- other -----*/
 figure { margin-bottom:18px;}
