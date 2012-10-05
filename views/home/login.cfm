@@ -8,21 +8,21 @@
                     <p>#flash("error")#</p>
                 </div>
             </cfif>
-                #startFormTag(action="Signin")#
+                #startFormTag(action="Signin", class="regform")#
                     <ul>
-                        <li>
+                        <li class="row">
                             <span>
-                                <input id="user-email" name="user[email]" type="email" placeholder="Your email address" required="required">
+                                <input id="user-email" name="user[email]" type="email" placeholder="Your email address" required="required" class="bigtext" title="Enter your email">
                             </span>
                         </li>
                         
-                        <li>
+                        <li class="row">
                             <span>
-                                <input id="user-password" type="password" name="user[password]" placeholder="Password" required="required">
+                                <input id="user-password" type="password" name="user[password]" placeholder="Password" required="required" class="bigtext" title="Enter your password">
                             </span>
                         </li>
                         
-                        <li>
+                        <li class="row">
                             <button type="submit">Sign In</button>
                         </li>                        
                     </ul>       			

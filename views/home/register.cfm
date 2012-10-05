@@ -39,15 +39,15 @@
                         </div>
                         
                         <div id="userProfileExtra" class="module">
-                        	<p>Reserve a personal id for your profile</p>
-                        	<li class="row"><label for="user-urlid">URL ID</label><p class="urlid">http://grand-life.com/</p><input id="user-urlid" name="user[urlid]" required="required" title="This allows for easy navigation to your profile page"></li>
+                        	<li class="row"><h3>Reserve a personal id for your profile</h3></li>
+                        	<li class="row"><label for="user-urlid">URL ID</label><p class="urlid">http://grand-life.com/</p><input id="user-urlid" name="user[urlid]" required="required" title="This allows for easy navigation to your profile page. For example: grand-life.com/profile/yourURLID"></li>
                             <li class="row"><label for="user-phone">Phone number</label><input id="user-phone" name="user[phone]" required="required" class="bigtext"></li>                        
                         </div>
                         
 		            
                     
 		            <div class="module">
-                    <li class="row">
+                    <li class="row last">
                     <p>#linkTo(action="tos", text="I have read the licence agreement.")#<input type="checkbox" id="agree" required="required" title="Ensure that you have read and understood the agreement before clicking register"> <label for="agree"></label></p>
                     </li>
                     

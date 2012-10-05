@@ -255,22 +255,33 @@ input, select, textarea {
         }
 /*Registration*/
 .module{
-	margin-bottom: 30px;
-	margin-top: 45px;
+	margin-bottom: 14px;
+	margin-top: 5px;
 	width: 390px;
+	padding-top: 10%;
 }
 	
 .row{
 	clear: both;
 	margin: 0;
 	width: 390px;
-	padding-bottom: 10%;
+	padding-bottom: 1%;
+	}
+.last{
+	padding-bottom: 0;
 	}
 
 .row-select{
 	clear: both;
 	margin: 0;
+	}
+.row:last-child{
+	padding-bottom: 0;
 	}	
+
+.row h3{
+	padding-top: 5%;
+	}
 
 .regform label{
 	float: left;
