@@ -1,5 +1,6 @@
 <cfparam name="user">
 <cfoutput>
+		<h2>Registration Form</h2>
 		<div class="form-wrap">
 		<cfif user.hasErrors()>
 			<div class="alert alert-error">
@@ -59,5 +60,14 @@
 		        #endFormTag()#
                 
                 </ul>
+            <div id="light-info">
+            	<div class="light-reg-text">
+                	<p>One <span>Light</span></p>
+                    <p>One <span>Goal</span></p>
+                    <p>One <span>Mind</span></p>
+                    <p>Unlimited <span>Possibilities</span></p>
+                    
+                </div>
+            </div>
 		    </div>
 </cfoutput>
