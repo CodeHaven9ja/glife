@@ -62,6 +62,9 @@
                 </div>
             </section>
         	<section class="container ui-box">
+            	<aside class="span3">
+                	<p>Hi</p>
+                </aside>
             </section>
         </div>
         <footer>
