@@ -8,22 +8,7 @@
 				
 	</cffunction>
 	
-	<!--- Signin Function--->
-    <!--- <cfscript>
-    public void function Signin() {
-		pageTitle = "Login";
-		var user = model("user").findOneByEmail(params.user.email);
-		if ( ! IsObject(user) || ! user.authenticate(params.user.password) ) {
-			flashInsert(message="We could not log you in. Please try that again.", messageType="error");
-			renderPage(action="new");
-		}
-		else {
-			signIn(user);
-			redirectBackOr(controller="secured", action="dash");
-		}
-	}
-	</cfscript> --->
-	
+	<!--- Signin Function--->	
 	<cffunction name="Signin">
 		<cfset pageTitle = "Login">
         
@@ -49,19 +34,12 @@
 	<cffunction name="create">
 		
 		<!--- If no User struct in the params, redirect --->
-        
-        <!---<cfdump var="#params#" abort="true" />--->
+
         
 		<cfif NOT structKeyExists(params, 'user')>
 			<cfset redirectTo(action="register") />
 		</cfif>
-        
-		<!--- Hash password --->
-		<!---<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA"))>
-		<cfset params.user.passwordConfirmation = lcase(hash(trim(params.user.passwordConfirmation), "SHA"))>
-        
-        <cfdump var="#params#" abort=true />--->
-        
+                
         <cfset params.user.role = 3 >
 		
 		<cfset user = model("user").new(params.user) />
@@ -140,6 +118,9 @@
 		<cfset structDelete(session, "user")>
 		<cfset redirectTo(route="home")>
 	</cffunction>	
-	
-
+    
+    <cffunction name="publicProfile">
+    	<cfset user = model("user").findOneByUrlID(params.username)>
+    </cffunction>
+    
 </cfcomponent>
