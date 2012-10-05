@@ -8,70 +8,61 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
-		#stylesheetLinkTag("bootstrap")#
-		#stylesheetLinkTag("bootstrap-responsive")#
-		#stylesheetLinkTag("app")#
+		#stylesheetLinkTag("dash")#
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	    <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
 	</head>
-	<body class="gray">
+	<body id="index" data-spy="scroll" data-target=".ui-sidebar">
 		<header>
-			<div class="container-fluid"></div>
-			<section class="container-fluid">
-			<div class="content-inner">
-				  <h1 id="logo" class="pump-up">Grand life social trading site.</h1>
-					<cfif params.controller eq "home" and params.action eq "index">
-						#includePartial("/partials/topsearch")#
-					</cfif>
-					</div>
-			</section>
-		</header>
-		
-		<!--- Main content --->
-		<section class="container-fluid">
-			<div class="row-fluid dash">
-				#includeContent()#
-				<!--- <div class="span3 visible-desktop">
-					<p>Trending Sales</p>
-				</div> --->
-			</div>
-		</section>
-		<footer class="container-fluid">
-			
-		</footer>
+        	<nav id="navigation" class="navbar">
+            	<div class="navbar-inner">
+                	<div class="container">
+                    	<div id="logo" class="pull-left">
+                        	<a href="/"><img src="../../images/logo.png"></a>
+                        </div><!-- Pull left -->
+                        <ul class="nav pull-right">
+                        	<li>#linkTo(text="Dashboard")#</li>
+                            <li class="divider-vertical"></li>
+                            <li>#linkTo(text="Wallet")#</li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                            	<a href="##" data-toggle="dropdown" class="dropdown-toggle">Grand Life <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                	<li>#linkTo(text="About Us")#</li>
+                                    <li>#linkTo(text="Board room")#</li>
+                                    <li>#linkTo(text="News")#</li>
+                                </ul>
+                            </li>
+                            <li class="divider-vertical"></li>
+                            <li> #linkTo(text="Help")#</li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                            	<a href="##" data-icon="g" data-toggle="dropdown" class="dropdown-toggle">
+                                <span>#user.urlid#</span>
+                                <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                	<li>#linkTo(route="logoutPage", text="Logout")#</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="main">
+        </div>
+        <footer>
+        </footer>
 		<cfif get("environment") is "design">
-			#javascriptIncludeTag("jquery-1.7.2.min")#
+			#javascriptIncludeTag("jquery.min")#
 		<cfelse>
 			#javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")#
 		</cfif>
 		#javaScriptIncludeTag("bootstrap.min")#
-		#javaScriptIncludeTag("http://malsup.github.com/jquery.form.js")#
-		<!--- #javaScriptIncludeTag("http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/jquery.iframe-transport.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/jquery.fileupload.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/jquery.fileupload-fp.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/jquery.fileupload-ui.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/locale.js")#
-		#javaScriptIncludeTag("http://blueimp.github.com/jQuery-File-Upload/js/main.js")# --->		
-		<script type="text/javascript">
-		  $(document).ready(function(){
-				$('input').hover(function()
-				{
-				$(this).popover('show')
-				});
-				$('##submitImage').bind('click', function(){
-				  		$(".preview").html('');
-						$(".preview").html('<img src="images/loader.gif" alt="Uploading...."//>');
-						$("##fileupload").ajaxForm({
-						target: '.preview'
-						}).submit();
-					});
-			});
-		  </script>	
+
 	</body>
 </html>
 </cfoutput>
