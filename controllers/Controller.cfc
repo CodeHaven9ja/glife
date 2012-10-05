@@ -16,5 +16,15 @@
 			<cfset redirectTo(controller="Home", action="login")>
 		</cfif>
 	</cffunction>
+    
+    <cffunction name="$checkVerify" access="private">
+    	<!--- Checks to see if user account has been verified --->
+        <cfset verified = model("user").findOne(session.user.id)>
+        
+        <cfif verified.confirmed EQ 1>
+        	<cfset redirectTo(controller="Home", action="verify", key=session.user.id)>
+        </cfif>
+        
+    </cffunction>
 	
 </cfcomponent>

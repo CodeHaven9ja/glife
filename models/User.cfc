@@ -1,109 +1,90 @@
-<cfcomponent extends="Model" output="false">
-	<cffunction name="init">
-		
-		<!--- associations --->
-		
-		<cfset hasMany("products")>
-		
-		<!--- Validation --->
-		<cfset beforeCreate("setEmailConfirmationToken")>
-        <cfset beforeSave("sanitize,securePassword,createPasswordResetToken")>
-		<cfset beforeValidation("setSalt")>
-        
-		<cfset validatesPresenceOf("firstname,lastname,email,password,sex")>
-		<cfset validatesUniquenessOf("email")>
-		<cfset validatesFormatOf(property="email", type="email")>
-		<cfset validatesLengthOf(property="firstname", maximum=45, minimum=2)>
-		<cfset validatesLengthOf(property="lastname", maximum=45, minimum=2)>
-		<cfset validatesLengthOf(property="email", maximum=127)>
-        <cfset validatesFormatOf(property="password", regEx="^.*(?=.{8,})(?=.*\d)(?=.*[a-z]).*$", message="Your password must be at least 8 characters long and contain a mixture of numbers and letters.")>
-		<cfset validatesConfirmationOf(property="password", message="Your password does not match the confirmation.")>
-        
-        <cfset automaticValidations(false)>
-		
-	</cffunction>
-    
-    <!--- Private Functions --->
-    
-    <cffunction name="sanitize" access="private">
-    	<cfset this.name = HtmlEditFormat(this.firstname)>
-        <cfset this.name = HtmlEditFormat(this.lastname)>
-    </cffunction>
-    
- 
-    
-	<cfscript>
-	
-	/**
-	 * @hint Sets the salt property for the password.
+component
+	extends="Model"
+	hint="Base User model"
+{
+	/*
+	 * @hint Constructor
 	 */
-		private void function setSalt() {
-			if ( StructKeyExists(this, "passwordConfirmation") ) {
-				this.salt = GenerateSecretKey("AES", 256);
-				this.save();
-			}
-		}
-	
+	public void function init() {
+		beforeCreate("setEmailConfirmationToken");
+		beforeSave("sanitize,securePassword");
+
+		validatesConfirmationOf("email,password");
+		validatesFormatOf(property="email", type="email");
+		validatesFormatOf(property="password", regEx="^.*(?=.{8,})(?=.*\d)(?=.*[a-z]).*$", message="Your password must be at least 8 characters long and contain a mixture of numbers and letters.");
+		validatesPresenceOf("firstname,lastname,email,password,sex");
+		validatesUniquenessOf("email");
+
+		/* We need to stop automatic validation from firing on the salt column.
+		 * The salt col is 'not null' in the db, and it's only set after the model
+		 * has been validated (beforeSave), thus the automatic validation will
+		 * always trigger without this line, preventing the user from being saved.
+		 * If someone has a better work around, please share.
+		 */
+		automaticValidations(false);
+	}
+
+	// --------------------------------------------------
+	// Callbacks
+
+	/*
+	 * @hint Sanitizes the user object.
+	 */
+	private void function sanitize() {
+		this.firstname = HtmlEditFormat(this.firstname);
+        this.lastname = HtmlEditFormat(this.lastname);
+	}
+
 	/*
 	 * @hint Secures the password property before saving it.
 	 */
-		private void function securePassword() {
-			if ( StructKeyExists(this, "passwordConfirmation") ) {
-				this.password = hashPassword(this.password, this.salt);	
-			}
+	private void function securePassword() {
+		if ( StructKeyExists(this, "passwordConfirmation") ) {
+			var bCrypt = CreateObject("java", "BCrypt");
+			this.salt = bCrypt.genSalt();
+			this.password = bCrypt.hashpw(this.password, this.salt);	
 		}
-	
-		/*
-	 * @hint Hashes a password string.
+	}
+
+	/**
+	 * @hint Sets the emailConfirmationToken for the user.
 	 */
-		private string function hashPassword(required string password, required string salt) {
-			for (var i = 1; i <= 1024; i++) {
-				arguments.password = Hash(arguments.password & arguments.salt, "SHA-512");
-			}
-			return arguments.password;
-		}
-	</cfscript>
+	private void function setEmailConfirmationToken() {
+		this.emailConfirmationToken = generateToken();	
+	}
 
-    
+	// --------------------------------------------------
+	// Public
 
-    
+	/**
+	 * @hint Authenticates a user object.
+	 */
+	public boolean function authenticate(required string password) {
+		var bCrypt = CreateObject("java", "BCrypt");
+		return ! Compare(this.password, bCrypt.hashpw(arguments.password, this.salt));
+	}
 
-	<cffunction name="setEmailConfirmationToken" access="private">
-		<cfset this.emailConfirmationToken = generateToken()>
-	</cffunction>
-    
-	<!---
 	/**
 	 * @hint Creates a password reset token
 	 */
-	 --->
-	<cffunction name="createPasswordResetToken">
-		<cfset this.passwordResetToken = generateToken()>
-		<cfset this.passwordResetAt = Now()>
-		<cfset this.save()>
-	</cffunction>
+	public void function createPasswordResetToken() {
+		this.passwordResetToken = generateToken();
+		this.passwordResetAt = Now();
+		this.save();
+	}
 
-	<!---
 	/*
 	 * @hint Convenience method to blank user password.
 	 */
-	 --->
-	<cffunction name="passwordToBlank">
-		<cfif StructKeyExists(this, "password")> 
-        	<cfset this.password = "">
-        </cfif>
-		<cfif  StructKeyExists(this, "passwordConfirmation")> 
-           	<cfset this.passwordConfirmation = "">
-        </cfif>    
-	</cffunction>
+	public void function passwordToBlank() {
+		if ( StructKeyExists(this, "password") ) this.password = "";
+		if ( StructKeyExists(this, "passwordConfirmation") ) this.passwordConfirmation = "";
+	}
 
-	<!---
 	/**
 	 * @hint Generates a random token.
 	 */
-	 --->
-	<cffunction name="generateToken">
-		<cfreturn Replace(LCase(CreateUUID()), "-", "", "all")>
-	</cffunction>
-    
-</cfcomponent>
+	public string function generateToken() {
+		return Replace(LCase(CreateUUID()), "-", "", "all");
+	}
+}

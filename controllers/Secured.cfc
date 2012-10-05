@@ -1,8 +1,32 @@
 <cfcomponent extends="Controller" output="false">
 	
 	<cffunction name="init">
-		<cfset filters(through="checkLogin")>
+		<cfset filters(through="checkLogin, $checkVerify", except="verify")>
 	</cffunction>
+    
+    <cffunction name="verify">
+    	<cfif StructKeyExists(params,"key")>
+			<cfset user = model("user").findOne(where="emailconfirmationtoken='#params.key#'")>
+            <!--- <cfdump var="#user#" abort=true /> --->
+            <cfif isObject(user)>
+                <cfif user.confirmed EQ 0>
+					<cfset user.confirmed = 0>
+                    <cfset user.update()>
+                    <cfset session.user.id = user.id>
+                    <cfset session.user.role = user.role>
+                    <cfset redirectTo(controller="secured", action="dash")>
+                <cfelse>
+                	<cfset redirectTo(controller="secured", action="dash")>
+                </cfif>
+            <cfelse>
+            	<cfset flashInsert(error="Email confirmation was invalid.")>
+                <cfset redirectTo(controller="home", action="failedVerify")>
+            </cfif>
+		<cfelse>
+        	<cfset flashInsert(error="Page does not exist. Please check the link and try again.")>
+            <cfset redirectTo(controller="home", action="failedVerify")>
+		</cfif>
+    </cffunction>
 	
 	
 	<cffunction name="dash">
@@ -14,15 +38,11 @@
 		<cfset number = left(number, 6)>
 		<cfdump var="#right(number, 16)#" abort="true"> --->
 		
-		<cfset pageTitle = "Social Trading">
+		<cfset pageTitle = "Dashboard">
 		<!--- RESTful call --->
 		<!--- TODO: Implement API key --->
 		<cfset $findUser()>
 		
-		<!--- <cfdump var="#user#" abort="true">
-		
-		
-		<cfset user = model("user").findOne(where="id='#session.user.id#'")> --->
 	</cffunction>
 
 	<cffunction name="uploadavatar">
@@ -56,6 +76,7 @@
 	<cffunction name="checkRole">
 		
 		<!--- TODO: Factor roles here --->
+        <!--- Also do option set --->
 		
 	</cffunction>
 	
@@ -63,19 +84,7 @@
 	
 	<cffunction name="$findUser" access="private">
 		
-		<cfhttp url="http://#cgi.SERVER_NAME#/api/user/#session.user.id#.json">
-		
-		<cfset data = deSerializeJSON(cfhttp.FileContent)>
-		
-		<cfset user.firstname = #data[1].firstname#>
-		<cfset user.lastname = #data[1].lastname#>
-		<cfset user.email = #data[1].email#>
-		<cfset user.id = #data[1].id#>
-		<cfset user.phone = #data[1].phone#>
-		<cfset user.role = #data[1].role#>
-		<cfset user.photourl = #data[1].photourl#>
-		<cfset user.urlid = #data[1].urlid#>
-		<cfset user.createdAt = #data[1].createdAt#>
+		<cfset user = model("user").findOneById(session.user.id)>
 		
 	</cffunction>
 </cfcomponent>

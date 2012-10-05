@@ -9,22 +9,36 @@
 	</cffunction>
 	
 	<!--- Signin Function--->
+    <!--- <cfscript>
+    public void function Signin() {
+		pageTitle = "Login";
+		var user = model("user").findOneByEmail(params.user.email);
+		if ( ! IsObject(user) || ! user.authenticate(params.user.password) ) {
+			flashInsert(message="We could not log you in. Please try that again.", messageType="error");
+			renderPage(action="new");
+		}
+		else {
+			signIn(user);
+			redirectBackOr(controller="secured", action="dash");
+		}
+	}
+	</cfscript> --->
 	
 	<cffunction name="Signin">
 		<cfset pageTitle = "Login">
-		<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA-512"))>
-        <cfdump var="#params#" abort="true">
-		<cfset user = model("user").findOne(where="email='#params.user.email#' AND password='#params.user.password#'")>
-		<cfif isObject(user)>
+        
+		<cfset user = model("user").findOneByEmail(params.user.email)>
+		<cfif isObject(user) AND user.authenticate(params.user.password)>
+        	<cfset password = user.authenticate(params.user.password)>
 			<cfset session.user.id = user.id>
 			<cfset session.user.role = user.role>
-			<cfset redirectTo(controller="secured", action="dash")>
+			<cfset redirectTo(route="profilePrivate", username=user.urlid)>
 		<cfelse>
 			<cfset user = model("user").new(username=params.user.email)>
 			<cfset flashInsert(error="Login credentials invalid.")>
 			<cfset renderPage(action="login")>
 		</cfif>
-	</cffunction>
+	</cffunction> 
 	
 	<cffunction name="Register">
 		<cfset user = model("user").new()>
@@ -44,7 +58,9 @@
         
 		<!--- Hash password --->
 		<!---<cfset params.user.password = lcase(hash(trim(params.user.password), "SHA"))>
-		<cfset params.user.passwordConfirmation = lcase(hash(trim(params.user.passwordConfirmation), "SHA"))>--->
+		<cfset params.user.passwordConfirmation = lcase(hash(trim(params.user.passwordConfirmation), "SHA"))>
+        
+        <cfdump var="#params#" abort=true />--->
         
         <cfset params.user.role = 3 >
 		
@@ -94,6 +110,27 @@
 			<cfset redirectTo(action="login")>
 		</cfif>
 	</cffunction>
+    
+    <cffunction name="verify">
+    	<cfset user = model("user").findOneByID(params.key)>
+    </cffunction>
+    
+    <cffunction name="resendEmailVerification">
+    
+    	<cfset user = model("user").findOneByID(params.key)>
+        <cfset userFullName = #user.firstname# & " " & #user.lastname#>
+        
+        <cfset sendEmail(
+					from="webmaster@testingground.tk",
+					to=user.email,
+					subject = "Your account verification link.",
+					recipientName=userFullName,
+					emailVerificationCode=user.emailconfirmationtoken,
+					template = "verifyEmailTemplate"
+					
+				)>
+        <cfset redirectTo(action="logout")>
+    </cffunction>
 	
 	<cffunction name="login">
 		<cfset pageTitle = "Login">
@@ -101,7 +138,7 @@
 	
 	<cffunction name="logout">
 		<cfset structDelete(session, "user")>
-		<cfset redirectTo(route="root")>
+		<cfset redirectTo(route="home")>
 	</cffunction>	
 	
 
