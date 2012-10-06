@@ -6,7 +6,8 @@
         and to confirm your start date.
     </p>
     <p>
-        Click <a href="http://testingground.tk/index.cfm/home/verify-action/#emailVerificationCode#">Here</a> to verify your account.
+    	
+        Click <a href="http://testingground.tk?controller=home&action=verify-action&key=#emailVerificationCode#">Here</a> to verify your account.
     </p>
     
 </cfoutput>
