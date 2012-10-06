@@ -128,14 +128,17 @@
 			<cfset user = model("user").findOne(where="emailconfirmationtoken='#params.key#'")>
             <!--- <cfdump var="#user#" abort=true /> --->
             <cfif isObject(user)>
-                <cfif user.confirmed EQ 0>
+                <cfif user.confirmed EQ 1>
 					<cfset user.confirmed = 0>
                     <cfset user.update()>
                     <cfset session.user.id = user.id>
                     <cfset session.user.role = user.role>
                     <cfset redirectTo(controller="secured", action="dash")>
+                <cfelseif user.confirmed EQ 0>
+                	<cfset redirectTo(controller="home", action="login")>
                 <cfelse>
-                	<cfset redirectTo(controller="secured", action="dash")>
+                	<cfset flashInsert(error="An Error occurred.")>
+                	<cfset redirectTo(controller="home", action="failedVerify")>
                 </cfif>
             <cfelse>
             	<cfset flashInsert(error="Email confirmation was invalid.")>
