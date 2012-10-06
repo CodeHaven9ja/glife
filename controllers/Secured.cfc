@@ -1,34 +1,9 @@
 <cfcomponent extends="Controller" output="false">
 	
 	<cffunction name="init">
-		<cfset filters(through="checkLogin, $checkVerify", except="verify")>
+		<cfset filters(through="checkLogin, $checkVerify")>
 	</cffunction>
-    
-    <cffunction name="verify">
-    	<cfif StructKeyExists(params,"key")>
-			<cfset user = model("user").findOne(where="emailconfirmationtoken='#params.key#'")>
-            <!--- <cfdump var="#user#" abort=true /> --->
-            <cfif isObject(user)>
-                <cfif user.confirmed EQ 0>
-					<cfset user.confirmed = 0>
-                    <cfset user.update()>
-                    <cfset session.user.id = user.id>
-                    <cfset session.user.role = user.role>
-                    <cfset redirectTo(controller="secured", action="dash")>
-                <cfelse>
-                	<cfset redirectTo(controller="secured", action="dash")>
-                </cfif>
-            <cfelse>
-            	<cfset flashInsert(error="Email confirmation was invalid.")>
-                <cfset redirectTo(controller="home", action="failedVerify")>
-            </cfif>
-		<cfelse>
-        	<cfset flashInsert(error="Page does not exist. Please check the link and try again.")>
-            <cfset redirectTo(controller="home", action="failedVerify")>
-		</cfif>
-    </cffunction>
-	
-	
+
 	<cffunction name="dash">
 		
 		<!--- TODO: Use below comment to make validate function in sscc plugin --->

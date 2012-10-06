@@ -6,7 +6,7 @@
         and to confirm your start date.
     </p>
     <p>
-        Click #linkTo(text="here", controller="secured", action="verify", key=emailVerificationCode)# to verify your account.
+        Click <a href="http://dev.glife.local/index.cfm/home/verify-action/#emailVerificationCode#">Here</a> to verify your account.
     </p>
     
 </cfoutput>
