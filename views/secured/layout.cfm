@@ -63,7 +63,7 @@
             </section>
         	<section class="container ui-box">
             	<aside class="span3">
-                	<p>Hi</p>
+                	<p>Work in progress</p>
                 </aside>
             </section>
         </div>
