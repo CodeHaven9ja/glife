@@ -1,6 +1,62 @@
 /* CSS Document */
 
+aside{
+	width: 200px;
+	float: left;
+	margin-left: 5px;
+}
+
 #title h2{
 	border-bottom:solid 1px #C9CCD0;
+}
+
+/*Dash Side-Menu */
+
+.dash-menu{
+	list-style:none;
+	padding: 15px 0;
+	margin: 0;
+}
+
+.dash-menu li{
+	margin: 10px;
+	padding: 10px;
+	text-indent: -9999px;
+}
+
+.dash-menu a:nth-child(1){
+		display: block;
+        background: url(/images/private.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(1):hover{
+	background-position: 0 -64px;
+}
+
+.register{
+	margin: 0 23.4%;
+	padding: 10px 0 ;
+}
+
+.form-wrap{
+	margin-top: 5%;
+	padding: 0 44px;
+	border: solid #EAEAEA 1px;
+	position:relative;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.14);	
+	}
+
+.form-wrap h2{
+	padding: 0 36px;
+}
+
+.profileimg{
+	width: 180px;
 }
 

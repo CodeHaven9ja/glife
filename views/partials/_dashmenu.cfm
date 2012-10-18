@@ -1,36 +1,42 @@
 <cfoutput>
-	<div class="span3">
-       <div class="well sidebar-nav">
-         <ul class="nav nav-list">
-           
-			<li class="nav-header"><i class="icon-user"></i>User</li> 
-           <li class="active">#linkTo(text="<i class='icon-info-sign icon-white'></i> Profile", action="profile")#</li>
-           <li><a href="##"><i class="icon-cog"></i>Settings</a></li>
-           <li class="nav-header"><i class="icon-envelope"></i>Messages</li>
-		
-		<!--- TODO: Add a badge to notify unread messages --->
-           <li><a href="##"><i class="icon-inbox"></i>Inbox</a></li>
-           <li><a href="##"><i class="icon-upload"></i>Sent</a></li>
-           <li><a href="##"><i class="icon-pencil"></i>Compose</a></li>
-           <li><a href="##" ><i class="icon-trash"></i>Trash</a></li>
-           <div class="hidden-phone">
-		   
-		   <li class="nav-header"><i class="icon-shopping-cart"></i>Market</li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Products</a></li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Sales</a></li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Invoices</a></li>
-		   <li><a href="##"><i class="icon-chevron-right"></i>Bills</a></li></div>
-		   
-		   
-           <li class="nav-header"><i class="icon-list"></i>Wallet</li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Recharge Account</a></li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Check Balance</a></li>
-           <li><a href="##" class="hidden-phone"><i class="icon-chevron-right"></i>Recent Transactions</a></li>
-           
-		<div class="hidden-phone"><li class="nav-header"><i class="icon-briefcase"></i>Job Center</li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Professionals</a></li>
-           <li><a href="##"><i class="icon-chevron-right"></i>Financiers</a></li></div>
-         </ul>
-       </div><!--/.well -->
-     </div>
+	<header>
+        	<nav id="navigation" class="navbar">
+            	<div class="navbar-inner">
+                	<div class="container">
+                    	<div id="logo" class="pull-left">
+                        	<a href="/">#imageTag(source="logo.png")#</a>
+                        </div><!-- Pull left -->
+                        <ul class="nav pull-right">
+                        	<li>#linkTo(text="Dashboard", route="profilePrivate", username="#user.urlid#")#</li>
+                            <li class="divider-vertical"></li>
+                            <li>#linkTo(text="Wallet")#</li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                            	<a href="##" data-toggle="dropdown" class="dropdown-toggle">Grand Life <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                	<li>#linkTo(text="About Us")#</li>
+                                    <li>#linkTo(text="Board room")#</li>
+                                    <li>#linkTo(text="News")#</li>
+                                </ul>
+                            </li>
+                            <li class="divider-vertical"></li>
+                            <li> #linkTo(text="Help")#</li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                            	<a href="##" data-icon="g" data-toggle="dropdown" class="dropdown-toggle">
+                                <span>#user.urlid#</span>
+                                <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                	<li>#linkTo(route="settings", text="Change Picture", username="#user.urlid#", key="change-avi")#</li>
+                                	<li>#linkTo(route="settings", text="Change Password", username="#user.urlid#", key="change-Password")#</li>
+                                    <li>#linkTo(route="settings", text="Delete Account", username="#user.urlid#", key="delete-Account")#</li>
+                                	<li>#linkTo(route="logoutPage", text="Logout")#</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 </cfoutput>

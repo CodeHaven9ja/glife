@@ -1,7 +1,9 @@
 <!--- Profile Routes --->
 
-<cfset addRoute(name="profilePrivate", pattern="/dashbord/[username]", controller="secured", action="dash")>
 <cfset addRoute(name="profilePublic", pattern="/profile/[username]", controller="home", action="publicProfile")>
+
+<cfset addroute(name="settings", pattern="/dashboard/settings/[username]/[key]", controller="secured", action="settings")>
+<cfset addRoute(name="profilePrivate", pattern="/dashboard/[username]", controller="secured", action="dash")>
 
 <cfset addRoute(name="contact", pattern="/contact", controller="home", action="contact")>
 <cfset addRoute(name="loginPage", pattern="/login", controller="home", action="login")>

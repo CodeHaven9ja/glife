@@ -10,4 +10,9 @@
         <strong>#DateFormat(startDate, "dddd, mmmm, d, yyyy")#</strong>.
     </p>
     
+    <p>
+    	
+        Click <a href="http://testingground.tk?controller=home&action=verify-action&key=#emailVerificationCode#">Here</a> to verify your account.
+    </p>
+    
 </cfoutput>

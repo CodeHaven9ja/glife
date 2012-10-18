@@ -17,15 +17,35 @@
 		<!--- RESTful call --->
 		<!--- TODO: Implement API key --->
 		<cfset $findUser()>
+        
+        <!--- <cfdump var="#user.profile()#" abort=true /> --->
+        
+        <cfif user.profile.id EQ "">
+        	<cfset flashInsert(noProfile="Please complete your profile.")>
+        	<cfset redirectTo(action="editProfile")>
+        </cfif>
 		
 	</cffunction>
+    
+    <cffunction name="editProfile">
+    	<cfset pageTitle = "Welcome">
+        <cfset $findUser()>
+    </cffunction>
+    
+    <cffunction name="createProfile">
+    	<cfset user = model("user").findOneByID(params.user.id)>
+        <cfset user.update(params.user)>
+    	<cfdump var="#user#" abort=true>
+    </cffunction>
 
 	<cffunction name="uploadavatar">
+    	<cfset return = #params.filedata#>
+    	<cfoutput>#return#</cfoutput>	
 		
-		<cfset validFormats = "image/*">
-		<cfif isDefined('uploadurlimage') AND uploadurlimage NEQ ''>
+		<!---<cfset validFormats = "image/*">
+		<cfif isDefined(params,"filedata") AND params.filedata NEQ ''>
 			<cfset ifolder8 = "profile">
-			<cfset nifolder8 = ExpandPath("images/#ifolder8#")>
+			<cfset nifolder8 = ExpandPath("images/#ifolder8#/uploads")>
 			<cfset TAB = Chr(9)>
 				<cfif NOT DirectoryExists(nifolder8)>
 					<cfdirectory action="create" directory="#nifolder8#" mode="777">
@@ -45,8 +65,24 @@
 		<cfset user = model("user").findByKey(session.user.id)>
 		<cfset user.update(params.user)>
 
-		<cfset redirectTo(action="dash")>
+		<cfset redirectTo(action="dash")>--->
 	</cffunction>
+    
+    <cffunction name="settings">
+    	<cfswitch expression="#params.key#">
+        	<cfcase value="change-password">
+            	<cfset pageTitle = "Change Your password">
+            </cfcase>
+            <cfcase value="delete-account">
+            	<cfset user = model("user").findOneByID(session.user.id)>
+                <cfset user.delete()>
+                <cfset redirectTo(route="logoutPage")>
+            </cfcase>
+        </cfswitch>
+        
+        <cfset $findUser()>
+        
+    </cffunction>
 	
 	<cffunction name="checkRole">
 		
@@ -59,7 +95,7 @@
 	
 	<cffunction name="$findUser" access="private">
 		
-		<cfset user = model("user").findOneById(session.user.id)>
+		<cfset user = model("user").findOne(where="id='#session.user.id#'", include="profile")>
 		
 	</cffunction>
 </cfcomponent>

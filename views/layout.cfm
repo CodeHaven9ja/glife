@@ -51,6 +51,8 @@
   
   <cfif get("environment") is "design">
   	#javascriptIncludeTag("jquery.min")#
+  <cfelseif get("environment") is "development">
+  	#javascriptIncludeTag("jquery.min")#
   <cfelse>
   	#javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")#
   </cfif>

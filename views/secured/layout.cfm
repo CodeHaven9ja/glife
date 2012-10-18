@@ -8,64 +8,20 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
-		#stylesheetLinkTag("dash, customdash")#
+		#stylesheetLinkTag("dash, customdash, uploadify, default")#
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	    <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
 	</head>
 	<body id="index" data-spy="scroll" data-target=".ui-sidebar">
-		<header>
-        	<nav id="navigation" class="navbar">
-            	<div class="navbar-inner">
-                	<div class="container">
-                    	<div id="logo" class="pull-left">
-                        	<a href="/"><img src="../../images/logo.png"></a>
-                        </div><!-- Pull left -->
-                        <ul class="nav pull-right">
-                        	<li>#linkTo(text="Dashboard")#</li>
-                            <li class="divider-vertical"></li>
-                            <li>#linkTo(text="Wallet")#</li>
-                            <li class="divider-vertical"></li>
-                            <li class="dropdown">
-                            	<a href="##" data-toggle="dropdown" class="dropdown-toggle">Grand Life <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                	<li>#linkTo(text="About Us")#</li>
-                                    <li>#linkTo(text="Board room")#</li>
-                                    <li>#linkTo(text="News")#</li>
-                                </ul>
-                            </li>
-                            <li class="divider-vertical"></li>
-                            <li> #linkTo(text="Help")#</li>
-                            <li class="divider-vertical"></li>
-                            <li class="dropdown">
-                            	<a href="##" data-icon="g" data-toggle="dropdown" class="dropdown-toggle">
-                                <span>#user.urlid#</span>
-                                <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                	<li>#linkTo(route="logoutPage", text="Logout")#</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+    	<!-- Nav -->
+		#includePartial("/partials/dashmenu")#
+        <!-- /nav -->
         <div id="main">
-        	<section style="margin-bottom:-10px;" class="container ui-box info">
-            	<div class="ui-box-content-holder ui-box-no-header">
-                	<div id="avi" class="span3"><img src="../../images/placeholder.jpg"></div>
-                    <div id="title" class="span7">
-                    	<h2>Welcome <span>#user.firstname#</span></h2>
-                    </div>
-                </div>
-            </section>
-        	<section class="container ui-box">
-            	<aside class="span3">
-                	<p>Work in progress</p>
-                </aside>
-            </section>
+            <!-- Content -->
+        	#includeContent()# 
+            <!-- /Content -->
         </div>
         <footer>
         </footer>
@@ -75,6 +31,57 @@
 			#javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")#
 		</cfif>
 		#javaScriptIncludeTag("bootstrap.min")#
+        #javaScriptIncludeTag("jquery-impromptu.3.1.min, swfobject, jquery.uploadify.v2.1.0.min, jquery-uberuploadcropper, jcrop/js/jquery.Jcrop.min")#
+        
+        <script type="text/javascript">
+			$(function() {
+				$('##profileform').hide();
+				$('##UploadPhoto').uberuploadcropper({
+					//---------------------------------------------------
+					// uploadify options..
+					//---------------------------------------------------
+					'uploader'  : '../../javascripts/uploadify.swf',
+					'script'    : '../../miscellaneous/uploadify.php',
+					'cancelImg' : '../../images/cancel.png',
+					'multi'     : false,
+					'auto'      : true,
+					'folder'    : '../../images/profile/#session.user.id#',
+					'fileDesc'  : 'JPG',
+					'fileExt'   : '*.jpg;*.jpeg',
+					//---------------------------------------------------
+					//now the cropper options..
+					//---------------------------------------------------
+					'aspectRatio': 1, 
+					'allowSelect': true,			//can reselect
+					'allowResize' : true,			//can resize selection
+					'setSelect': [ 0, 0, 200, 200 ],	//these are the dimensions of the crop box x1,y1,x2,y2
+					'minSize': [ 180, 210 ],		//if you want to be able to resize, use these
+					//'maxSize': [ 180, 210 ],
+					/*
+					onError: function (a, b, c, d) {
+						if (d.status == 404)
+							alert('Could not find upload script. Use a path relative to: '+'<?= getcwd() ?>');
+						else if (d.type === "HTTP")
+							alert('error '+d.type+": "+d.status);
+						else if (d.type ==="File Size")
+							alert(c.name+' '+d.type+' Limit: '+Math.round(d.sizeLimit/1024)+'KB');
+						else
+							alert('error '+d.type+": "+d.text);
+					},*/
+					//---------------------------------------------------
+					//now the uber options..
+					//---------------------------------------------------
+					'cropScript': '../../miscellaneous/crop.php',
+					'onComplete': function(imgs,data){ 
+						$('##PhotoPrev').attr('src','../../images/profile/#session.user.id#/'+imgs[0].name +'?d='+ (new Date()).getTime());
+						$('##uploadform').hide();
+						$('##user-profile-photourl').attr('value', imgs[0].name);
+						$('##profileform').show(); 
+					}
+				});
+				
+			});
+		</script>
 
 	</body>
 </html>

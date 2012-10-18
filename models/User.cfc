@@ -6,6 +6,14 @@ component
 	 * @hint Constructor
 	 */
 	public void function init() {
+    	
+        //Associations
+        
+        	hasOne(name="Profile", dependent="delete");
+            nestedProperties(association="profile");
+        
+        //Validations
+        
 		beforeCreate("setEmailConfirmationToken");
 		beforeSave("sanitize,securePassword");
 

@@ -17,6 +17,7 @@
         	<cfset password = user.authenticate(params.user.password)>
 			<cfset session.user.id = user.id>
 			<cfset session.user.role = user.role>
+        <!--- TODO: Include logic to check for remember state --->
 			<cfset redirectTo(route="profilePrivate", username=user.urlid)>
 		<cfelse>
 			<cfset user = model("user").new(username=params.user.email)>
@@ -30,6 +31,9 @@
 		
 		<cfset pageTitle = "Social Trading">
 	</cffunction>
+
+
+	<!--- Function to create new user --->
 	
 	<cffunction name="create">
 		
@@ -62,6 +66,7 @@
 					to=user.email,
 					subject = "Your account has been successfully created.",
 					recipientName=userFullName,
+					emailVerificationCode=user.emailconfirmationtoken,
 					startDate=user.createdAt,
 					template = "successEmailTemplate"
 					
@@ -123,10 +128,11 @@
     	<cfset user = model("user").findOneByUrlID(params.username)>
     </cffunction>
     
+    <!--- Functin to verify confirmation of accounts --->
+    
     <cffunction name="verifyAction">
     	<cfif StructKeyExists(params,"key")>
 			<cfset user = model("user").findOne(where="emailconfirmationtoken='#params.key#'")>
-            <!--- <cfdump var="#user#" abort=true /> --->
             <cfif isObject(user)>
                 <cfif user.confirmed EQ 1>
 					<cfset user.confirmed = 0>
