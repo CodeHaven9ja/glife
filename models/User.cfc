@@ -10,6 +10,14 @@ component
         //Associations
         
         	hasOne(name="Profile", dependent="delete");
+            //People
+            hasMany("ceos");
+            hasMany("managers");
+            hasMany("representatives");
+            //Entities
+            hasMany("businesses");
+            hasMany("communities");
+            
             nestedProperties(association="profile");
         
         //Validations

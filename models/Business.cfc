@@ -1,6 +1,6 @@
 component
 	extends="Model"
-	hint="Base Category model"
+	hint="Base Business model"
 {
 
 		/*Init function*/
@@ -9,9 +9,10 @@ component
         	
             //Associations
             
-            belongsTo("entity");
-            hasMany("products")
-            hasMany("businesses");
+            belongsTo("user");
+            belongsTo("ceo");
+            belongsTo("category");
+            hasMany("branches");
             
         }
 

@@ -4,8 +4,8 @@
 <file name="arrow-prev.png" server="testingground.tk//www/" local="129933422508171737" remote="129939975000000000" Dst="0" />
 <file name="back.png" server="testingground.tk//www/" local="129933827828354234" remote="129939975000000000" Dst="0" />
 <file name="forward.png" server="testingground.tk//www/" local="129933827701787089" remote="129939975600000000" Dst="0" />
-<file name="slide4.jpg" server="testingground.tk//www/" local="129933997500000000" remote="129939977400000000" Dst="0" />
-<file name="slide5.jpg" server="testingground.tk//www/" local="129934130420000000" remote="129939977400000000" Dst="0" />
+<file name="slide4.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
+<file name="slide5.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
 <file name="bg-noise-tile.png" server="testingground.tk//www/" local="129939469687657502" remote="129939975000000000" Dst="0" />
 <file name="placeholder.jpg" server="testingground.tk//www/" local="129938643280000000" remote="129939975600000000" Dst="0" />
 <file name="signup_bg.jpg" server="testingground.tk//www/" local="129938564180000000" remote="129939976200000000" Dst="0" />
@@ -28,9 +28,9 @@
 <file name="logo.png" server="testingground.tk//www/" local="129929886842446677" remote="129939975600000000" Dst="0" />
 <file name="pattern.png" server="testingground.tk//www/" local="129436313320000000" remote="129939975600000000" Dst="0" />
 <file name="regForm.png" server="testingground.tk//www/" local="129932102862018849" remote="129939976200000000" Dst="0" />
-<file name="slide1.jpg" server="testingground.tk//www/" local="129933410620000000" remote="129939976800000000" Dst="0" />
-<file name="slide2.jpg" server="testingground.tk//www/" local="129933833500000000" remote="129939976800000000" Dst="0" />
-<file name="slide3.jpg" server="testingground.tk//www/" local="129933845280000000" remote="129939976800000000" Dst="0" />
+<file name="slide1.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
+<file name="slide2.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
+<file name="slide3.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
 <file name="temp1.jpg" server="testingground.tk//www/" local="129219466780000000" remote="129939977400000000" Dst="0" />
 <file name="thumb1.jpg" server="testingground.tk//www/" local="129219567380000000" remote="129939977400000000" Dst="0" />
 <file name="thumb2.jpg" server="testingground.tk//www/" local="129219567580000000" remote="129939977400000000" Dst="0" />
@@ -41,4 +41,15 @@
 <file name="twitter.png" server="testingground.tk//www/" local="129856921912918380" remote="129939977400000000" Dst="0" />
 <file name="cancel.png" server="testingground.tk//www/" local="128793819540000000" remote="129950737800000000" Dst="0" />
 <file name="photo_not_available.png" server="testingground.tk//www/" local="128887634580000000" remote="129950737800000000" Dst="0" />
+<file name="ceo.png" server="testingground.tk//www/" local="129950151900000000" remote="129950848200000000" Dst="0" />
+<file name="community.png" server="testingground.tk//www/" local="129950152440000000" remote="129950848200000000" Dst="0" />
+<file name="investment.png" server="testingground.tk//www/" local="129950152180000000" remote="129950848200000000" Dst="0" />
+<file name="manager.png" server="testingground.tk//www/" local="129950152040000000" remote="129950848200000000" Dst="0" />
+<file name="private.png" server="testingground.tk//www/" local="129950151760000000" remote="129950848200000000" Dst="0" />
+<file name="representative.png" server="testingground.tk//www/" local="129950152040000000" remote="129950848200000000" Dst="0" />
+<file name="slide10.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848200000000" Dst="0" />
+<file name="slide6.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848800000000" Dst="0" />
+<file name="slide7.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848800000000" Dst="0" />
+<file name="slide8.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848800000000" Dst="0" />
+<file name="slide9.jpg" server="testingground.tk//www/" local="129950151240000000" remote="129950848800000000" Dst="0" />
 </dwsync>
