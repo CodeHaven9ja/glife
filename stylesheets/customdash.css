@@ -34,6 +34,60 @@ aside{
 .dash-menu a:nth-child(1):hover{
 	background-position: 0 -64px;
 }
+.dash-menu a:nth-child(2){
+		display: block;
+        background: url(/images/ceo.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(2):hover{
+	background-position: 0 -64px;
+}
+
+.dash-menu a:nth-child(3){
+		display: block;
+        background: url(/images/manager.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(3):hover{
+	background-position: 0 -64px;
+}
+
+.dash-menu a:nth-child(4){
+		display: block;
+        background: url(/images/representative.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(4):hover{
+	background-position: 0 -64px;
+}
+
+.dash-menu a:nth-child(5){
+		display: block;
+        background: url(/images/private.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(5):hover{
+	background-position: 0 -64px;
+}
+
+.dash-menu a:nth-child(6){
+		display: block;
+        background: url(/images/private.png) 0 -32px;
+        height: 32px;
+        width: 32px;
+}
+
+.dash-menu a:nth-child(6):hover{
+	background-position: 0 -64px;
+}
 
 .register{
 	margin: 0 23.4%;
