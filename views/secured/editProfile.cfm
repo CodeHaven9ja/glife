@@ -1,12 +1,10 @@
 <cfoutput>
-	<section class="container ui-box">
-		#flash("noProfile")#
-        
+	<section class="container ui-box">        
         <div class="span7 content register">
-        	#flash("noProfile")#
+        	<h2>#flash("noProfile")#</h2>
         	#startFormTag(action="createProfile", id="uploadform")#
             
-            	<h2>Upload a profile image</h2>
+            	<h3>Upload a profile image</h3>
             
             		<input type="file" name="UploadPhoto" id="UploadPhoto" />
                 	

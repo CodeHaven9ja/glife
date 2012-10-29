@@ -12,10 +12,10 @@ component
         	hasOne(name="Profile", dependent="delete");
             //People
             hasMany("ceos");
-            hasMany("managers");
+            hasMany("manager");
             hasMany("representatives");
             //Entities
-            hasMany("businesses");
+            hasMany("business");
             hasMany("communities");
             
             nestedProperties(association="profile");

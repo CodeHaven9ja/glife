@@ -80,6 +80,27 @@
 					}
 				});
 				
+				var $mainContent = $("##main-content"),
+					siteURL = "/index.cfm/",
+					mainURL = "http://" + top.location.toString();
+					$internalLinks = $('aside li a[href^="' + siteURL + '"]'),
+					URL = ''; 
+				
+				$('aside li').click(function() {
+					$('.active').removeClass('active').children('div').removeClass('selected');
+					$(this).addClass('active');
+					$(this).children('div').addClass('selected');
+					
+					URL = $(this).find('a').attr('href');
+					URL = URL + " ##inside";
+					$mainContent.animate({opacity:"0.01"});
+					$mainContent.load(URL, function(){
+						$mainContent.animate({opacity:"1"});
+						});
+					console.log(URL);
+					return false;
+				});
+				
 			});
 		</script>
 

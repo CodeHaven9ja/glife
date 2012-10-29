@@ -8,6 +8,6 @@
             	#includePartial("/partials/dashfunctionmenu")#
             </ul>
         </aside>
-        #includePartial("/partials/partialprivate")#
+        #includePartial("/partials/partialceo")#
     </section>
 </cfoutput>

@@ -1,92 +1,167 @@
 /* CSS Document */
 
+.main{
+	overflow: visible;
+}
+
 aside{
-	width: 200px;
+	width: 205px;
 	float: left;
-	margin-left: 5px;
 }
 
 #title h2{
 	border-bottom:solid 1px #C9CCD0;
 }
 
-/*Dash Side-Menu */
+
 
 .dash-menu{
 	list-style:none;
 	padding: 15px 0;
 	margin: 0;
+	overflow:visible;
 }
 
 .dash-menu li{
-	margin: 10px;
-	padding: 10px;
-	text-indent: -9999px;
+	margin: 7px 0 0 -5px;
+	padding: 6px;
 }
 
-.dash-menu a:nth-child(1){
-		display: block;
-        background: url(/images/private.png) 0 -32px;
-        height: 32px;
-        width: 32px;
+.menu-holder{
+	position:relative;
 }
 
-.dash-menu a:nth-child(1):hover{
+.menu-holder a{
+	padding-left: 32px;
+}
+
+aside ul.dash-menu li{
+	background: url(/images/ribbon.png);
+	padding-left: 5px;
+}
+
+.active  a{
+	color: #fff;
+}
+
+aside ul.dash-menu li a{
+	text-decoration:none;
+}
+
+aside ul.dash-menu li:nth-child(1).active{
+	background: url(/images/ribbon_private.png);
+	
+}
+
+
+aside ul.dash-menu li:nth-child(2).active{
+	background: url(/images/ribbon_ceo.png);
+}
+
+aside ul.dash-menu li:nth-child(3).active{
+	background: url(/images/ribbon_manager.png);
+}
+
+aside ul.dash-menu li:nth-child(4).active{
+	background: url(/images/ribbon_rep.png);
+}
+
+aside ul.dash-menu li:nth-child(5).active{
+	background: url(/images/ribbon_invest.png);
+}
+
+aside ul.dash-menu li:nth-child(6).active{
+	background: url(/images/ribbon_community.png);
+}
+
+aside ul.dash-menu li:nth-child(1) .menu-holder.selected{
+	background: url(/images/private.png) 0 -64px;
+}
+
+aside ul.dash-menu li:nth-child(2) .menu-holder.selected{
+	background: url(/images/ceo.png) 0 -64px;
+}
+
+aside ul.dash-menu li:nth-child(3) .menu-holder.selected{
+	background: url(/images/manager.png) 0 -64px;
+}
+
+aside ul.dash-menu li:nth-child(4) .menu-holder.selected{
+	background: url(/images/representative.png) 0 -64px;
+}
+
+aside ul.dash-menu li:nth-child(5) .menu-holder.selected{
+	background: url(/images/investment.png) 0 -64px;
+}
+
+aside ul.dash-menu li:nth-child(6) .menu-holder.selected{
+	background: url(/images/private.png) 0 -64px;
+}
+
+
+.dash-menu li:nth-child(1) .menu-holder{
+	background: url(/images/private.png) 0 -32px;
+	height: 32px;
+	width: 32px;
+}
+
+.dash-menu li:nth-child(1) .menu-holder:hover{
 	background-position: 0 -64px;
 }
-.dash-menu a:nth-child(2){
+
+.dash-menu li:nth-child(2) .menu-holder{
 		display: block;
         background: url(/images/ceo.png) 0 -32px;
         height: 32px;
         width: 32px;
 }
 
-.dash-menu a:nth-child(2):hover{
+.dash-menu li:nth-child(2) .menu-holder:hover{
 	background-position: 0 -64px;
 }
 
-.dash-menu a:nth-child(3){
-		display: block;
+.dash-menu li:nth-child(3) .menu-holder{
         background: url(/images/manager.png) 0 -32px;
         height: 32px;
         width: 32px;
 }
 
-.dash-menu a:nth-child(3):hover{
+.dash-menu li:nth-child(3) .menu-holder:hover{
 	background-position: 0 -64px;
 }
 
-.dash-menu a:nth-child(4){
-		display: block;
+.dash-menu li:nth-child(4) .menu-holder{
         background: url(/images/representative.png) 0 -32px;
         height: 32px;
         width: 32px;
 }
 
-.dash-menu a:nth-child(4):hover{
+.dash-menu li:nth-child(4) .menu-holder:hover{
 	background-position: 0 -64px;
 }
 
-.dash-menu a:nth-child(5){
-		display: block;
+.dash-menu li:nth-child(5) .menu-holder{
         background: url(/images/investment.png) 0 -32px;
         height: 32px;
         width: 32px;
 }
 
-.dash-menu a:nth-child(5):hover{
+.dash-menu li:nth-child(5) .menu-holder:hover{
 	background-position: 0 -64px;
 }
 
-.dash-menu a:nth-child(6){
-		display: block;
+.dash-menu li:nth-child(6) .menu-holder{
         background: url(/images/private.png) 0 -32px;
         height: 32px;
         width: 32px;
 }
 
-.dash-menu a:nth-child(6):hover{
+.dash-menu li:nth-child(6) .menu-holder:hover{
 	background-position: 0 -64px;
+}
+
+.dash-menu li:nth-child(6) a{
+	display:block;
 }
 
 .register{
@@ -114,3 +189,115 @@ aside{
 	width: 180px;
 }
 
+.content-menu-box{
+	padding: 10px 36px;
+	margin: 10px 0 15px 0;
+	height: 128px;
+}
+
+.content-menu-box a{
+	display:block;
+	min-height: 128px;
+	min-width: 128px;
+	text-indent: -9999px;
+}
+
+.content .row:last-child{
+	padding-bottom: 20px;
+}
+
+#delbox a{
+	background: url(/images/menu_icons.png) -143px -256px;
+}
+
+#delbox a:hover{
+	background-position: -15px -256px;
+}
+
+#delbox p{
+	padding-left: 10px;
+}
+
+#cc a{
+	background: url(/images/menu_icons.png) -143px -128px;
+}
+
+#cc a:hover{
+	background-position: -16px -128px;
+}
+
+#cc p{
+	padding-left: 0;
+}
+
+#wallet a{
+	background: url(/images/menu_icons.png) -399px -129px;
+}
+
+#wallet a:hover{
+	background-position: -271px -128px;
+}
+
+#wallet p{
+	padding-left: 28px;
+}
+
+#business a{
+	background: url(/images/menu_icons.png) -397px -641px;
+}
+
+#business a:hover{
+	background-position: -271px -641px;
+}
+
+#business p{
+	padding-left: 28px;
+}
+
+#message a{
+	background: url(/images/menu_icons.png) -143px -385px;
+}
+
+#message a:hover{
+	background-position: -15px -384px;
+}
+
+#message p{
+	padding-left: 24px;
+}
+
+#market a{
+	background: url(/images/menu_icons.png) -143px -513px;
+}
+
+#market a:hover{
+	background-position: -15px -512px;
+}
+
+#market p{
+	padding-left: 24px;
+}
+
+#advanced a{
+	background: url(/images/menu_icons.png) -399px -513px;
+}
+
+#advanced a:hover{
+	background-position: -271px -512px;
+}
+
+#advanced p{
+	padding-left: 20px;
+}
+
+#ls a{
+	background: url(/images/menu_icons.png) -143px -641px;
+}
+
+#ls a:hover{
+	background-position: -15px -640px;
+}
+
+#ls p{
+	padding-left: 9px;
+}
