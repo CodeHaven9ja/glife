@@ -10,6 +10,6 @@
     
     <li><div class='menu-holder'>#linkTo(text="Investment")#</div></li>
     
-    <li><div class='menu-holder'>#linkTo(text="Store Front")#</div></li> 
+    <li><div class='menu-holder'>#linkTo(text="Community")#</div></li> 
     
 </cfoutput>

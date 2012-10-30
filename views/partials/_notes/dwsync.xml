@@ -3,9 +3,13 @@
 <file name="_homeaside.cfm" server="testingground.tk//www/" local="129934284052978936" remote="129939985200000000" Dst="0" />
 <file name="_dashmenu.cfm" server="testingground.tk//www/" local="129949836643756655" remote="129950451000000000" Dst="0" />
 <file name="_footer.cfm" server="testingground.tk//www/" local="129931748173311815" remote="129939985200000000" Dst="0" />
-<file name="_gallery.cfm" server="testingground.tk//www/" local="129950831734265894" remote="129950849400000000" Dst="0" />
+<file name="_gallery.cfm" server="testingground.tk//www/" local="129959887711780367" remote="129961044000000000" Dst="0" />
 <file name="_homehead.cfm" server="testingground.tk//www/" local="129864648853609057" remote="129939985200000000" Dst="0" />
 <file name="_nav.cfm" server="testingground.tk//www/" local="129931741380433285" remote="129939985200000000" Dst="0" />
-<file name="_dashfunctionmenu.cfm" server="testingground.tk//www/" local="129949294860995015" remote="129950451000000000" Dst="0" />
+<file name="_dashfunctionmenu.cfm" server="testingground.tk//www/" local="129960902647590805" remote="129961044000000000" Dst="0" />
 <file name="_infodash.cfm" server="testingground.tk//www/" local="129950727441520690" remote="129950739600000000" Dst="0" />
+<file name="_partialceo.cfm" server="testingground.tk//www/" local="129960997521202590" remote="129961044000000000" Dst="0" />
+<file name="_partialprivate.cfm" server="testingground.tk//www/" local="129959274949522384" remote="129959731200000000" Dst="0" />
+<file name="_listbusiness.cfm" server="testingground.tk//www/" local="129961028663538042" remote="129961044000000000" Dst="0" />
+<file name="_partialceonull.cfm" server="testingground.tk//www/" local="129960908579414374" remote="129961044000000000" Dst="0" />
 </dwsync>

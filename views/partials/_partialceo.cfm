@@ -7,7 +7,7 @@
                         <p>Delivery box</p>
                     </div>
                     <div id="business" class="content-menu-box span2">
-                        #linkTo(text="business", action="business", key="ceo")#
+                        #linkTo(text="business", action="getBusiness")#
                         <p>Business</p>
                     </div>
                     <div id="message" class="content-menu-box span2">

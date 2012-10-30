@@ -13,7 +13,17 @@ aside{
 	border-bottom:solid 1px #C9CCD0;
 }
 
+#inside h2{
+	padding: 17px 0 0;
+}
 
+.my-select{
+	height: 29px;
+}
+
+.table-wrap{
+	padding-top: 22px;
+}
 
 .dash-menu{
 	list-style:none;
@@ -300,4 +310,12 @@ aside ul.dash-menu li:nth-child(6) .menu-holder.selected{
 
 #ls p{
 	padding-left: 9px;
+}
+
+#ajax-loader{
+	position:absolute;
+	top: 33%;
+	left: 46%;
+	z-index: 12;
+	display:none;
 }

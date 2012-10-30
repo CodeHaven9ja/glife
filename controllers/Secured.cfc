@@ -20,9 +20,6 @@
 		<!--- TODO: Implement API key --->
 		<cfset $findUser()>
         
-		<!--- set business fetch flow --->
-        <cfset $findBusines()>
-
         <cfif user.profile.id EQ "">
         	<cfset flashInsert(noProfile="Please complete your profile.")>
         	<cfset redirectTo(action="editProfile")>
@@ -33,6 +30,27 @@
     <cffunction name="ceo">
     	<cfset pageTitle = "Ceo">
         <cfset $findUser()>
+        <!--- set business fetch flow --->
+        <cfset $findBusines()>
+        <cfset $findCat()>        
+    </cffunction>
+    
+    <cffunction name="getBusiness">
+    	<cfset pageTitle = "Busines">
+        <cfset $findUser()>
+        <!--- set business fetch flow --->
+        <cfset $findBusines()>    
+    </cffunction>
+    
+    <cffunction name="createBusiness">
+    	<cfset params.newbusiness.userid = #session.user.id#>
+        <cfset params.newbusiness.ceoid = #session.user.id#>
+    	<cfset newBusiness = model("business").new(params.newbusiness)>
+        
+        <cfif newBusiness.save()>
+        	<cfset redirectTo(action="ceo")>
+        </cfif>
+        
     </cffunction>
     
     <cffunction name="editProfile">
@@ -80,9 +98,14 @@
     <cffunction name="$findBusines">
     	<cfset business = model("business").count(where="ceoid='#session.user.id#'", include="branches")>
     	<cfif #business# eq 0>
-        	<cfset business = "null">
+            <cfset newBusiness = model("business").new()>
         <cfelse>
-        	<cfset business = model("business").findAll(where="ceoid='#session.user.id#'", include="branches")>
+        	<cfset getBusiness = model("business").findAll(where="ceoid='#session.user.id#'", include="branches, category")>
         </cfif>    
     </cffunction>
+    
+    <cffunction name="$findCat">
+    	<cfset categories = model("category").findAll()>        
+    </cffunction>
+    
 </cfcomponent>

@@ -12,6 +12,7 @@
             <li><img src="images/slide8.jpg" alt=""></li>
             <li><img src="images/slide9.jpg" alt=""></li>
             <li><img src="images/slide10.jpg" alt=""></li>
+            <li><img src="images/slide11.jpg" alt=""></li>
 	        <li><img src="images/slide1.jpg" alt=""></li>
 	        <li><img src="images/slide4.jpg" alt=""></li>
 	      </ul>

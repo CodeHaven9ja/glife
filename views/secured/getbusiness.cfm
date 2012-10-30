@@ -9,7 +9,7 @@
             </ul>
         </aside>
         <cfif business neq 0>
-        	#includePartial("/partials/partialceo")#
+        	#includePartial("/partials/listbusiness")#
         <cfelse>
         	#includePartial("/partials/partialceonull")#
         </cfif>

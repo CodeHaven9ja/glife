@@ -23,6 +23,7 @@
         	#includeContent()# 
             <!-- /Content -->
         </div>
+        <img src="../../images/ajax_spinner.gif" alt="loader" id="ajax-loader" />
         <footer>
         </footer>
 		<cfif get("environment") is "design">
@@ -84,23 +85,25 @@
 					siteURL = "/index.cfm/",
 					mainURL = "http://" + top.location.toString();
 					$internalLinks = $('aside li a[href^="' + siteURL + '"]'),
-					URL = ''; 
+					URL = '';
 				
-				$('aside li').click(function() {
+				$('aside li, .content-menu-box').click(function() {
 					$('.active').removeClass('active').children('div').removeClass('selected');
 					$(this).addClass('active');
 					$(this).children('div').addClass('selected');
 					
 					URL = $(this).find('a').attr('href');
 					URL = URL + " ##inside";
+					$('##ajax-loader').show();
 					$mainContent.animate({opacity:"0.01"});
 					$mainContent.load(URL, function(){
+						$('##ajax-loader').hide();
 						$mainContent.animate({opacity:"1"});
 						});
 					console.log(URL);
 					return false;
 				});
-				
+								
 			});
 		</script>
 

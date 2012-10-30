@@ -10,7 +10,7 @@ component
             //Associations
             
             belongsTo("entity");
-            hasMany("products")
+            hasMany("products");
             hasMany("businesses");
             
         }
