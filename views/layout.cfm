@@ -19,6 +19,7 @@
   	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
+    <link rel="shortcut icon" href="/images/favicon.ico">
 </head>
 
 <body>
@@ -30,6 +31,7 @@
   </cfif>
   
   <div class="main-box"><!-- /div.main-box -->
+  <h1><a href="index.html">#imageTag("logo.png")#</a></h1>
     <div class="container"><!-- /div.container -->
       <div class="inside"><!-- /div.inside -->
         <div class="wrapper"><!-- div.wrapper -->

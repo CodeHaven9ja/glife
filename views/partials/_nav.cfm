@@ -2,7 +2,7 @@
 
 	<header>
 	    <div class="container">
-	    	<h1><a href="index.html"><img src="images/logo.png" width="170" height="58" longdesc="index.html"></a></h1>
+	    	
 	      <nav>
 	        <ul>
 	          <li>#linkTo(route="home", text="Home", class="current")#</li>
