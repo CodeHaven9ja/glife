@@ -11,7 +11,9 @@
                 </div>
             </div>
             <div id="title" class="span7">
-                <h2>Welcome <span>#user.firstname#</span></h2>
+                <div class="row dash-title">
+			<h2>Welcome <span>#user.firstname#</span></h2>
+		</div>
             </div>
         </div>
     </section>
