@@ -2,7 +2,9 @@
 	
 	<cffunction name="init">
 		<cfset filters(through="checkLogin, $checkVerify")>
+        <cfset provides("html,json")>
 	</cffunction>
+    <!--- Controller code --->
 
 	<cffunction name="dash">
 		
@@ -61,7 +63,7 @@
     <cffunction name="createProfile">
     	<cfset user = model("user").findOneByID(params.user.id)>
         <cfset user.update(params.user)>
-    	<cfdump var="#user#" abort=true>
+    	<cfset redirectTo(action="dash")>
     </cffunction>
         
     <cffunction name="settings">
@@ -86,6 +88,8 @@
         <!--- Also do option set --->
 		
 	</cffunction>
+    
+    
 	
 	<!--- Private functions --->
 	

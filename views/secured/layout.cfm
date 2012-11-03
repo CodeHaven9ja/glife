@@ -33,7 +33,8 @@
 			#javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")#
 		</cfif>
 		#javaScriptIncludeTag("bootstrap.min")#
-        #javaScriptIncludeTag("jquery-impromptu.3.1.min, swfobject, jquery.uploadify.v2.1.0.min, jquery-uberuploadcropper, jcrop/js/jquery.Jcrop.min")#
+        #javaScriptIncludeTag("jquery-impromptu.3.1.min, swfobject, jquery.uploadify.v2.1.0.min")#
+        #javaScriptIncludeTag("jquery.Jcrop.min,jquery-uberuploadcropper")#
         
         <script type="text/javascript">
 			$(function() {
@@ -42,12 +43,12 @@
 					//---------------------------------------------------
 					// uploadify options..
 					//---------------------------------------------------
-					'uploader'  : '../../javascripts/uploadify.swf',
-					'script'    : '../../miscellaneous/uploadify.php',
-					'cancelImg' : '../../images/cancel.png',
+					'uploader'  : '/javascripts/uploadify.swf',
+					'script'    : '/misc/upload',
+					'cancelImg' : '/images/cancel.png',
 					'multi'     : false,
 					'auto'      : true,
-					'folder'    : '../../images/profile/#session.user.id#',
+					'folder'    : '/images/profile/#session.user.id#',
 					'fileDesc'  : 'JPG',
 					'fileExt'   : '*.jpg;*.jpeg',
 					//---------------------------------------------------
@@ -73,9 +74,9 @@
 					//---------------------------------------------------
 					//now the uber options..
 					//---------------------------------------------------
-					'cropScript': '../../miscellaneous/crop.php',
+					'cropScript': '/miscellaneous/crop.php',
 					'onComplete': function(imgs,data){ 
-						$('##PhotoPrev').attr('src','../../images/profile/#session.user.id#/'+imgs[0].name +'?d='+ (new Date()).getTime());
+						$('##PhotoPrev').attr('src','/images/profile/#session.user.id#/'+imgs[0].name +'?d='+ (new Date()).getTime());
 						$('##uploadform').hide();
 						$('##user-profile-photourl').attr('value', imgs[0].name);
 						$('##profileform').show(); 

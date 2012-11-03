@@ -2,7 +2,7 @@
 	<section class="container ui-box">        
         <div class="span7 content register">
         	<h2>#flash("noProfile")#</h2>
-        	#startFormTag(action="createProfile", id="uploadform")#
+        	#startFormTag(controller="misc", enctype="multipart/form-data",action="upload", id="uploadform")#
             
             	<h3>Upload a profile image</h3>
             
@@ -26,7 +26,7 @@
                     
                     
                     
-                    <!---<div>#submitTag(value="Create")#</div>--->
+   
                     
             #endFormTag()#
             
