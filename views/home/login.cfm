@@ -1,7 +1,11 @@
 <cfoutput>
 	
 	<div class="form-wrap">
-    <h2>Welcome to <span>Grand Life</span></h2>
+    <h3>
+    	Grand Life
+    	<span>Be a light and be lighted</span>
+    </h3>
+    	
             <cfif flashKeyExists("error")>
                 <div class="alert alert-block alert-error">
                     <h4 class="class="alert-heading"">Error</h4>

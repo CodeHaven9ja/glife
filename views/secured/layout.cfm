@@ -9,6 +9,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 		#stylesheetLinkTag("dash, customdash, uploadify, default")#
+        #stylesheetLinkTag("http://www.eyecon.ro/bootstrap-datepicker/css/datepicker.css")#
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	    <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,16 +36,25 @@
 		#javaScriptIncludeTag("bootstrap.min")#
         #javaScriptIncludeTag("jquery-impromptu.3.1.min, swfobject, jquery.uploadify.v2.1.0.min")#
         #javaScriptIncludeTag("jquery.Jcrop.min,jquery-uberuploadcropper")#
+        #javaScriptIncludeTag("http://www.eyecon.ro/bootstrap-datepicker/js/bootstrap-datepicker.js")#
         
         <script type="text/javascript">
 			$(function() {
+				$('##dp1').datepicker({
+					format: 'mm-dd-yyyy'
+				});
 				$('##profileform').hide();
 				$('##UploadPhoto').uberuploadcropper({
 					//---------------------------------------------------
 					// uploadify options..
 					//---------------------------------------------------
 					'uploader'  : '/javascripts/uploadify.swf',
-					'script'    : '/misc/upload',
+					<cfif get("environment") is "design">
+						'script'    : '/?controller=misc'+'&'+'action=upload',
+					<cfelse>
+						'script'    : '/misc/upload',
+					</cfif>
+					
 					'cancelImg' : '/images/cancel.png',
 					'multi'     : false,
 					'auto'      : true,

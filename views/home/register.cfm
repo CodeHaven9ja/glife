@@ -13,6 +13,7 @@
 		                <div id="userProfilePersonal" class="module">
                             <li class="row">
                             	<label for="user-firstname">First Name:</label><input id="user-firstname" name="user[firstname]" required="required" placeholder="First Name" class="bigtext" title="Enter your First name">
+                                <label for="user-middlename">Middle Name:</label><input id="user-middlename" name="user[middlename]"  placeholder="Middle Name" class="bigtext" title="Enter your Middle name">
                             	<label for="user-lastname">Last Name:</label><input id="user-lastname" name="user[lastname]" required="required" placeholder="Last Name" class="bigtext" title="Enter your Last name">
                             </li>
                             
@@ -40,7 +41,7 @@
                         </div>
                         
                         <div id="userProfileExtra" class="module">
-                        	<li class="row"><h3>Reserve a personal id for your profile</h3></li>
+                        	<li class="row"><h4>Reserve a personal id for your profile</h4></li>
                         	<li class="row"><label for="user-urlid">URL ID</label><p class="urlid">http://grand-life.com/</p><input id="user-urlid" name="user[urlid]" required="required" title="This allows for easy navigation to your profile page. For example: grand-life.com/profile/yourURLID"></li>
                             <li class="row"><label for="user-phone">Phone number</label><input id="user-phone" name="user[phone]" required="required" class="bigtext"></li>                        
                         </div>

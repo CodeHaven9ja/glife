@@ -9,6 +9,7 @@
   <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#stylesheetLinkTag("kendo.common.min, kendo.default.min")#
   </cfif>
+  <link href='http://fonts.googleapis.com/css?family=Average' rel='stylesheet' type='text/css'>
   <!--[if lt IE 7]>
   	<link rel="stylesheet" href="stylesheets/ie/ie6.css" type="text/css" media="all">
   <![endif]-->
@@ -59,20 +60,15 @@
   	#javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")#
   </cfif>
   
-  #javascriptIncludeTag("	cufon-yui,  								
-  							jquery.qtip.min,
-  							Humanst521_BT_400.font,
-  							Humanst521_Lt_BT_400.font,
+  #javascriptIncludeTag("	jquery.qtip.min,
   							roundabout,
   							roundabout_shapes,
   							gallery_init,
-  							cufon-replace,
                             app
   						")#
   <!--- <cfif params.controller EQ "home" and params.action EQ "login" OR params.action EQ "register">
   	#javascriptIncludeTag("kendo.web.min")#
   </cfif> --->
-  <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
 

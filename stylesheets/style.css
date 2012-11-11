@@ -95,9 +95,19 @@ html, body { height:100%;}
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.14);	
 	}
 
-.form-wrap h2{
-	padding: 0 36px;
+.form-wrap h3{
+	padding: 0 34%;
+	color: #0F6B12;
+	font-size: 18px;
+	font-family: ‘Metrophobic’, Arial, serif; font-weight: 400; 
 }
+
+.form-wrap h3 span{
+	display:block;
+	font-size: 10px;
+	color: #000;
+	margin-left: -12px;
+	}
 
 input, select, textarea { 
 	font-family:Arial, Helvetica, sans-serif;
@@ -322,6 +332,21 @@ h2 {
 	h2 span {
 		color:#8a8a8a;
 	}
+article h2{
+	text-align:center;
+}
+article h2 span{
+	display:block;
+	text-align:left;
+	font-size:18px;
+	margin-left: 87px;
+}
+
+article ul{
+	list-style:circle;
+	margin-left: 40px;
+}
+
 h3 {
 	font-size:1em;
 	margin-bottom:6px;

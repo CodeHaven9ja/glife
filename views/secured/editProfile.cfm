@@ -30,7 +30,7 @@
                     
             #endFormTag()#
             
-            <img src="../../images/photo_not_available.png" id="PhotoPrev" alt="Photo Preview" />
+            <img src="../../images/photo_not_available.png" id="PhotoPrev" alt="Photo Preview" class="img-polaroid" />
             
             #startFormTag(action="createProfile", id="profileform", class="form-wrap")#
             	#hiddenField(objectName="user", property="id")#
@@ -43,14 +43,53 @@
                     labelPlacement="before",
                     property="address"
                     )#
-                #textArea(
-                    label="Bio",
+                #textField(
+                    label="City/Province",
                     objectName="user",
                     association="profile",
                     labelPlacement="before",
-                    property="about"
+                    property="city"
+                    )#
+                #textField(
+                    label="LGA/County",
+                    objectName="user",
+                    association="profile",
+                    labelPlacement="before",
+                    property="county"
+                    )#
+                #textField(
+                    label="State",
+                    objectName="user",
+                    association="profile",
+                    labelPlacement="before",
+                    property="State"
+                    )#
+                #textField(
+                    label="Date of birth",
+                    objectName="user",
+                    association="profile",
+                    labelPlacement="before",
+                    property="dob",
+                    id="dp1"
                     )#
                     
+                <!---TODO: This is going to be dependent on the user's country. Remove Hardcoded lines soon---> 
+                <label class="radio">
+                  <input type="radio" name="user[profile][bankid]" id="user-profile-bank1" value="gtb" checked>
+                  GUARANTY TRUST BANK
+                </label>
+                <label class="radio">
+                  <input type="radio" name="user[profile][bankid]" id="user-profile-bank2" value="strl">
+                  Sterling Bank
+                </label>
+                <label class="radio">
+                  <input type="radio" name="user[profile][bankid]" id="user-profile-bank3" value="acc" checked>
+                  ACCESS BANK
+                </label>
+                <label class="radio">
+                  <input type="radio" name="user[profile][bankid]" id="user-profile-bank4" value="eco">
+                  ECO BANK
+                </label> 
                 <div>#submitTag(value="Complete")#</div>
                 
             #endFormTag()#
